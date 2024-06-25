@@ -1,0 +1,7 @@
+#+title: The case for using Rust (as a marine engineer)
+#+author: Nick Lamprinidis
+
+* About me
+
+
+* Why rust?
