@@ -1,16 +1,37 @@
 #+title: The case for using Rust (as a marine engineer)
 #+author: Nick Lamprinidis
+#+STARTUP: inlineimages
 
 * About me
 
 * Funny story
 
+[[./images/utube_comment.png]]
+(youtube link: [[https://www.youtube.com/watch?v=0JkbNFpXlXc&lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB]] )
+
 * So what happened?
 
 * What is rust?
+
+- Initially developed by mozilla to solve the cpp problems in Firefox
+- IT IS FAST
+- Memory safety guaranteed
+- cargo (package manager) is the best
+- The best error error messages in any language
+
+** How fast?
+[[./images/fastest-elapsed-imp.svg]]
+
+** Memory safety
+
+** Cargo is cool
+
+** Compiler errors
 
 * Some general rule-of-thumbs
 
 * Numerical Example
 
 * Conclusions
+
+* Repo & contact info
