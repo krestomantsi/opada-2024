@@ -1,20 +1,19 @@
 #+title: The case for using Rust (as a marine engineer)
 #+author: Nick Lamprinidis
-#+STARTUP: inlineimages
 
 * About me
 
-+ Work at ABS since 2018.
++ Working at ABS since 2018.
 + Likes all things numerical.
 + Not affiliated with the rust foundation.
 
 * Funny story
 
 [[./images/utube_comment.png]]
-(youtube link: [[https://www.youtube.com/watch?v=0JkbNFpXlXc&lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB]] )
+(youtube link: see last slide)
 
 * So what happened?
-- ported ABS's weather data processing library into rust.
+- Ported ABS's weather data processing library into rust.
 - x10 times speed up vs julias NCDatasets library.
   [[https://github.com/Alexander-Barth/NCDatasets.jl]]
 - Enter the rabit hole.
@@ -54,16 +53,6 @@
 + Error handling at its best
 
 ** Compiler errors
-+
-
-* Some general rule-of-thumbs
-
-+ Only use Vec<stuff> and structs to store data
-+ Functions on the above should accept &Vec<stuff> and &Struct
-+ Ignore Generics and Traits for now
-+ Dont mind .clone()
-
-* Numerical Example
 ** example1 1/
 
 #+begin_src
@@ -176,8 +165,35 @@ fn zero(x: &Vec<f32>) -> Vec<f32> {
 }
 #+end_src
 
+* Cons
+
++ Slower dev time.
++ Very slow compile times.
++ Syntax *is* verbose (kind of).
+
+* Some general rule-of-thumbs
+
++ Only use Vec<stuff> and structs to store data
++ Functions on the above should accept &Vec<stuff> and &Struct
++ Ignore Generics and Traits for now
++ Dont mind .clone()
+
+* Numerical Example
+min $L=(x+y)^2$
+
+given that $x^2+y^2=1$
+#+reveal:split
+Rewritting this as lagrange multipliers
+min $L=(x+y)^2+\lambda*(x^2+y^2)$
+#+reveal:split
+Rewritting this as lagrange multipliers (heuristic)
+min $L=(x+y)^2+\lambda*(x^2+y^2)^2$
+
+
 * Conclusions
 
 * Repo & contact info
 + github repo: https://github.com/krestomantsi/opada-2024
 + email: nlampri@gmail.com
+
++ (youtube link: [[https://www.youtube.com/watch?v=0JkbNFpXlXc&lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB]] )

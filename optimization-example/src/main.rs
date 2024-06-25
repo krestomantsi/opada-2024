@@ -6,7 +6,7 @@ fn main() {
     let x = [-0.1, 0.1, 0.5];
     let lr = 0.01;
     let now = std::time::Instant::now();
-    let x_hat = lagrange_multiplier(&x, lr);
+    let x_hat = lagrange_multiplier(&x, lr, 10000);
     println!("{:?}", now.elapsed());
     let y = &x_hat[..DIM].try_into().unwrap();
     println!("x_hat is {:?}", x_hat);
@@ -44,13 +44,13 @@ fn gradient(x: &[f32; DIM + 1]) -> [f32; DIM + 1] {
     grads
 }
 
-fn lagrange_multiplier(x: &[f32; DIM + 1], lr: f32) -> [f32; DIM + 1] {
+fn lagrange_multiplier(x: &[f32; DIM + 1], lr: f32, epochs: usize) -> [f32; DIM + 1] {
     //x_hat is the concatenation of x and the lagrange multiplier
     let mut grads;
     let mut opt = adamw_init(x, lr, 0.0, 0.9, 0.999);
     let mut x_hat = x.clone();
 
-    for _ii in 0..10000 {
+    for _ii in 0..epochs {
         grads = gradient(&x_hat);
         x_hat = adamw(&x_hat, &grads, &mut opt);
         //x_hat = sgd(&x_hat, &grads, lr);

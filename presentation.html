@@ -10,12 +10,13 @@
 <link rel="stylesheet" href="file://c:/Users/NLamprinidis/.config/emacs/.local/straight/build-30.0.50/revealjs/dist/reveal.css"/>
 
 <link rel="stylesheet" href="file://c:/Users/NLamprinidis/.config/emacs/.local/straight/build-30.0.50/revealjs/dist/theme/black.css" id="theme"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">The case for using Rust (as a marine engineer)</h1><h2 class="author">Nick Lamprinidis</h2><p class="date">Created: 2024-06-25 Tue 14:58</p>
+<h1 class="title">The case for using Rust (as a marine engineer)</h1><h2 class="author">Nick Lamprinidis</h2><p class="date">Created: 2024-06-25 Tue 16:34</p>
 </section>
 <section id="table-of-contents-section">
 <div id="table-of-contents" role="doc-toc">
@@ -31,17 +32,15 @@
 <li><a href="#/slide-5-1">5.1. How fast?</a></li>
 <li><a href="#/slide-5-2">5.2. Safety</a></li>
 <li><a href="#/slide-5-3">5.3. Compiler errors</a></li>
+<li><a href="#/slide-5-4">5.4. example1 1/</a></li>
+<li><a href="#/slide-5-5">5.5. example1 2/</a></li>
 </ul>
 </li>
-<li><a href="#/slide-6">6. Some general rule-of-thumbs</a></li>
-<li><a href="#/slide-7">7. Numerical Example</a>
-<ul>
-<li><a href="#/slide-7-1">7.1. example1 1/</a></li>
-<li><a href="#/slide-7-2">7.2. example1 2/</a></li>
-</ul>
-</li>
-<li><a href="#/slide-8">8. Conclusions</a></li>
-<li><a href="#/slide-9">9. Repo &amp; contact info</a></li>
+<li><a href="#/slide-6">6. Cons</a></li>
+<li><a href="#/slide-7">7. Some general rule-of-thumbs</a></li>
+<li><a href="#/slide-8">8. Numerical Example</a></li>
+<li><a href="#/slide-9">9. Conclusions</a></li>
+<li><a href="#/slide-10">10. Repo &amp; contact info</a></li>
 </ul>
 </div>
 </div>
@@ -51,9 +50,9 @@
 <section id="slide-1">
 <h2 id="1"><span class="section-number-2">1.</span> About me</h2>
 <ul>
-<li></li>
-
-<li>Not affiliated with the rust foundation</li>
+<li>Working at ABS since 2018.</li>
+<li>Likes all things numerical.</li>
+<li>Not affiliated with the rust foundation.</li>
 
 </ul>
 
@@ -64,7 +63,7 @@
 <h2 id="2"><span class="section-number-2">2.</span> Funny story</h2>
 <p>
 <img src="./images/utube_comment.png" alt="utube_comment.png" />
-(youtube link: <a href="https://www.youtube.com/watch?v=0JkbNFpXlXc&amp;lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB">https://www.youtube.com/watch?v=0JkbNFpXlXc&amp;lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB</a> )
+(youtube link: see last slide)
 </p>
 
 </section>
@@ -73,14 +72,14 @@
 <section id="slide-3">
 <h2 id="3"><span class="section-number-2">3.</span> So what happened?</h2>
 <ul>
-<li>ported ABS&rsquo;s weather data processing library into rust.</li>
+<li>Ported ABS&rsquo;s weather data processing library into rust.</li>
 <li>x10 times speed up vs julias NCDatasets library.
 <a href="https://github.com/Alexander-Barth/NCDatasets.jl">https://github.com/Alexander-Barth/NCDatasets.jl</a></li>
 <li>Enter the rabit hole.</li>
 
 </ul>
 
-<div id="org1c01319" class="figure">
+<div id="org46950a8" class="figure">
 <p><img src="./images/rewriteinrust.jpg" alt="rewriteinrust.jpg" width="100px" />
 </p>
 </div>
@@ -124,7 +123,7 @@
 <section id="slide-5-1">
 <h3 id="5-1"><span class="section-number-3">5.1.</span> How fast?</h3>
 
-<div id="org4a146b6" class="figure">
+<div id="orge75177a" class="figure">
 <p><img src="./images/fastest-elapsed-imp.svg" alt="fastest-elapsed-imp.svg" class="org-svg" />
 </p>
 </div>
@@ -144,23 +143,9 @@
 </section>
 <section id="slide-5-3">
 <h3 id="5-3"><span class="section-number-3">5.3.</span> Compiler errors</h3>
-
 </section>
-</section>
-<section>
-<section id="slide-6">
-<h2 id="6"><span class="section-number-2">6.</span> Some general rule-of-thumbs</h2>
-
-</section>
-</section>
-<section>
-<section id="slide-7">
-<h2 id="7"><span class="section-number-2">7.</span> Numerical Example</h2>
-<div class="outline-text-2" id="text-7">
-</div>
-</section>
-<section id="slide-7-1">
-<h3 id="7-1"><span class="section-number-3">7.1.</span> example1 1/</h3>
+<section id="slide-5-4">
+<h3 id="5-4"><span class="section-number-3">5.4.</span> example1 1/</h3>
 <pre class="example">
 fn main() {
     let pantry = vec![Food::Fasolakia(3), Food::Burger, Food::Gyros];
@@ -218,8 +203,8 @@ For more information about this error, try <span style="color: #90A4AE;">`</span
 </div>
 
 </section>
-<section id="slide-7-2">
-<h3 id="7-2"><span class="section-number-3">7.2.</span> example1 2/</h3>
+<section id="slide-5-5">
+<h3 id="5-5"><span class="section-number-3">5.5.</span> example1 2/</h3>
 <pre class="example">
 fn main() {
     let x = vec![1.0f32, 2.0, 3.0];
@@ -265,16 +250,84 @@ help: consider cloning the value if the performance cost is acceptable
 </div>
 
 </section>
+<section>
+<pre class="example">
+fn main() {
+    let x = vec![1.0f32, 2.0, 3.0];
+    let y = vec![4.0f32, 5.0, 6.0];
+    let z = zero(&amp;x);
+    let w = zero(&amp;x);
+    println!("Hurray!!");
+}
+
+fn zero(x: &amp;Vec&lt;f32&gt;) -&gt; Vec&lt;f32&gt; {
+    x.iter().map(|a| a * 0.0).collect::&lt;Vec&lt;f32&gt;&gt;()
+}
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6.</span> Cons</h2>
+<ul>
+<li>Slower dev time.</li>
+<li>Very slow compile times.</li>
+<li>Syntax <b>is</b> verbose (kind of).</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7.</span> Some general rule-of-thumbs</h2>
+<ul>
+<li>Only use Vec&lt;stuff&gt; and structs to store data</li>
+<li>Functions on the above should accept &amp;Vec&lt;stuff&gt; and &amp;Struct</li>
+<li>Ignore Generics and Traits for now</li>
+<li>Dont mind .clone()</li>
+
+</ul>
+
+</section>
 </section>
 <section>
 <section id="slide-8">
-<h2 id="8"><span class="section-number-2">8.</span> Conclusions</h2>
+<h2 id="8"><span class="section-number-2">8.</span> Numerical Example</h2>
+<p>
+min \(L=(x+y)^2\)
+</p>
+
+<p>
+given that \(x^2+y^2=1\)
+</p>
+</section>
+<section>
+<p>
+Rewritting this as lagrange multipliers
+min \(L=(x+y)^2+\lambda*(x^2+y^2)\)
+</p>
+
 
 </section>
 </section>
 <section>
 <section id="slide-9">
-<h2 id="9"><span class="section-number-2">9.</span> Repo &amp; contact info</h2>
+<h2 id="9"><span class="section-number-2">9.</span> Conclusions</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-10">
+<h2 id="10"><span class="section-number-2">10.</span> Repo &amp; contact info</h2>
+<ul>
+<li>github repo: <a href="https://github.com/krestomantsi/opada-2024">https://github.com/krestomantsi/opada-2024</a></li>
+<li>email: nlampri@gmail.com</li>
+
+<li>(youtube link: <a href="https://www.youtube.com/watch?v=0JkbNFpXlXc&amp;lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB">https://www.youtube.com/watch?v=0JkbNFpXlXc&amp;lc=UgwQJyFb6m1vBkg431d4AaABAg.9sIktyoda_P9t3lAdkUZLB</a> )</li>
+
+</ul>
 </section>
 </section>
 </div>
