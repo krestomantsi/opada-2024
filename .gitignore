@@ -1,0 +1,9 @@
+# ignore all target folders
+*target
+# ignore all .pdf .csv .png files
+*.pdf
+*.jpg
+*.xlsx
+*.tex
+# ignore all .history folders
+*.history
