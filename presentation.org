@@ -3,8 +3,10 @@
 #+STARTUP: inlineimages
 
 * About me
-+
-+ Not affiliated with the rust foundation
+
++ Work at ABS since 2018.
++ Likes all things numerical.
++ Not affiliated with the rust foundation.
 
 * Funny story
 
@@ -52,8 +54,14 @@
 + Error handling at its best
 
 ** Compiler errors
++
 
 * Some general rule-of-thumbs
+
++ Only use Vec<stuff> and structs to store data
++ Functions on the above should accept &Vec<stuff> and &Struct
++ Ignore Generics and Traits for now
++ Dont mind .clone()
 
 * Numerical Example
 ** example1 1/
@@ -171,3 +179,5 @@ fn zero(x: &Vec<f32>) -> Vec<f32> {
 * Conclusions
 
 * Repo & contact info
++ github repo: https://github.com/krestomantsi/opada-2024
++ email: nlampri@gmail.com
