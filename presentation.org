@@ -3,5 +3,14 @@
 
 * About me
 
+* Funny story
 
-* Why rust?
+* So what happened?
+
+* What is rust?
+
+* Some general rule-of-thumbs
+
+* Numerical Example
+
+* Conclusions
