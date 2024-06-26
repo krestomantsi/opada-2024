@@ -4,7 +4,6 @@
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [bigger]
 
-
 * About me
 
 + Working at ABS since 2018.
@@ -20,7 +19,7 @@
 - Ported ABS's weather data processing library into rust.
 - x10 times speed up vs julias NCDatasets library.
   [[https://github.com/Alexander-Barth/NCDatasets.jl]]
-- Enter the rabit hole.
+- Enter the rabbit hole.
 #+attr_html: :width 100px
 #+attr_latex: :width 100px
 [[./images/rewriteinrust.jpg]]
@@ -55,7 +54,7 @@
 + Pointers checked at compile-time
 + Thread-safety
 + No hidden states
-+ Beautifull type system
++ Beautiful type system
 + Error handling at its best
 
 * example 1
