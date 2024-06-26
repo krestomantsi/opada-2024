@@ -16,7 +16,7 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">The case for using Rust (as a marine engineer)</h1><h2 class="author">Nick Lamprinidis</h2><p class="date">Created: 2024-06-25 Tue 16:34</p>
+<h1 class="title">The case for using Rust (as a marine engineer)</h1><h2 class="author">Nick Lamprinidis</h2><p class="date">Created: 2024-06-26 Wed 10:11</p>
 </section>
 <section id="table-of-contents-section">
 <div id="table-of-contents" role="doc-toc">
@@ -27,24 +27,30 @@
 <li><a href="#/slide-2">2. Funny story</a></li>
 <li><a href="#/slide-3">3. So what happened?</a></li>
 <li><a href="#/slide-4">4. So what happened? (pt 2/2)</a></li>
-<li><a href="#/slide-5">5. What is rust?</a>
-<ul>
-<li><a href="#/slide-5-1">5.1. How fast?</a></li>
-<li><a href="#/slide-5-2">5.2. Safety</a></li>
-<li><a href="#/slide-5-3">5.3. Compiler errors</a></li>
-<li><a href="#/slide-5-4">5.4. example1 1/</a></li>
-<li><a href="#/slide-5-5">5.5. example1 2/</a></li>
-</ul>
-</li>
-<li><a href="#/slide-6">6. Cons</a></li>
-<li><a href="#/slide-7">7. Some general rule-of-thumbs</a></li>
-<li><a href="#/slide-8">8. Numerical Example</a></li>
-<li><a href="#/slide-9">9. Conclusions</a></li>
-<li><a href="#/slide-10">10. Repo &amp; contact info</a></li>
+<li><a href="#/slide-5">5. What is rust?</a></li>
+<li><a href="#/slide-6">6. How fast?</a></li>
+<li><a href="#/slide-7">7. Safety</a></li>
+<li><a href="#/slide-8">8. example 1</a></li>
+<li><a href="#/slide-9">9. example 1 (Cont)</a></li>
+<li><a href="#/slide-10">10. Run result</a></li>
+<li><a href="#/slide-11">11. Run result (Cont)</a></li>
+<li><a href="#/slide-12">12. example 2</a></li>
+<li><a href="#/slide-13">13. The error</a></li>
+<li><a href="#/slide-14">14. The error (Cont)</a></li>
+<li><a href="#/slide-15">15. Final result</a></li>
+<li><a href="#/slide-16">16. example 3</a></li>
+<li><a href="#/slide-17">17. example 3 (Cont)</a></li>
+<li><a href="#/slide-18">18. example 3 (Cont)</a></li>
+<li><a href="#/slide-19">19. Cons</a></li>
+<li><a href="#/slide-20">20. Some general rule-of-thumbs</a></li>
+<li><a href="#/slide-21">21. Numerical Example</a></li>
+<li><a href="#/slide-22">22. Questions?</a></li>
+<li><a href="#/slide-23">23. Repo &amp; contact info</a></li>
 </ul>
 </div>
 </div>
 </section>
+
 
 <section>
 <section id="slide-1">
@@ -79,7 +85,7 @@
 
 </ul>
 
-<div id="org46950a8" class="figure">
+<div id="org63b94d0" class="figure">
 <p><img src="./images/rewriteinrust.jpg" alt="rewriteinrust.jpg" width="100px" />
 </p>
 </div>
@@ -120,19 +126,23 @@
 </ul>
 
 </section>
-<section id="slide-5-1">
-<h3 id="5-1"><span class="section-number-3">5.1.</span> How fast?</h3>
+</section>
+<section>
+<section id="slide-6">
+<h2 id="6"><span class="section-number-2">6.</span> How fast?</h2>
 
-<div id="orge75177a" class="figure">
-<p><img src="./images/fastest-elapsed-imp.svg" alt="fastest-elapsed-imp.svg" class="org-svg" />
+<div id="orgf66c87f" class="figure">
+<p><img src="./images/fastest-elapsed-imp.png" alt="fastest-elapsed-imp.png" width="300px" />
 </p>
 </div>
 
 </section>
-<section id="slide-5-2">
-<h3 id="5-2"><span class="section-number-3">5.2.</span> Safety</h3>
+</section>
+<section>
+<section id="slide-7">
+<h2 id="7"><span class="section-number-2">7.</span> Safety</h2>
 <ul>
-<li>pointers checked at compile-time</li>
+<li>Pointers checked at compile-time</li>
 <li>Thread-safety</li>
 <li>No hidden states</li>
 <li>Beautifull type system</li>
@@ -141,28 +151,31 @@
 </ul>
 
 </section>
-<section id="slide-5-3">
-<h3 id="5-3"><span class="section-number-3">5.3.</span> Compiler errors</h3>
 </section>
-<section id="slide-5-4">
-<h3 id="5-4"><span class="section-number-3">5.4.</span> example1 1/</h3>
+<section>
+<section id="slide-8">
+<h2 id="8"><span class="section-number-2">8.</span> example 1</h2>
 <pre class="example">
 fn main() {
-    let pantry = vec![Food::Fasolakia(3), Food::Burger, Food::Gyros];
-    let yummy_foods = yummy(&amp;pantry);
+    let lista = vec![Food::Fasolakia(3), Food::Burger, Food::Gyros];
+    let yummy_foods = yummy(&amp;lista);
     println!("{:?}", yummy_foods);
 }
-
-// returns if a food is yummy or not
-fn yummy(lista: &amp;Vec&lt;Food&gt;) -&gt; Vec&lt;bool&gt; {
+fn yummy(lista: &amp;Vec&lt;Food&gt;) -&gt; Vec&lt;bool&gt; {// returns if a food is yummy or not
     let is_yummy = lista.iter().map(|food| match food {
         Food::Fasolakia(_) =&gt; false,
         Food::Burger =&gt; true,
-        Food::Gyros =&gt; true,
     });
     is_yummy.collect()
 }
+</pre>
 
+</section>
+</section>
+<section>
+<section id="slide-9">
+<h2 id="9"><span class="section-number-2">9.</span> example 1 (Cont)</h2>
+<pre class="example">
 #[derive(PartialEq)]
 enum Food {
     Fasolakia(u16),
@@ -172,7 +185,10 @@ enum Food {
 </pre>
 
 </section>
+</section>
 <section>
+<section id="slide-10">
+<h2 id="10"><span class="section-number-2">10.</span> Run result</h2>
 <div class="org-src-container">
 
 <pre class="src src-markdown">cargo run
@@ -189,26 +205,36 @@ note: <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">Food</
 18 | enum Food {
 <span style="color: #37474F;">   |      ^^^^</span>
 ...
-21 |     Gyros,
-<span style="color: #37474F;">   |     ----- not covered</span>
-   = note: the matched value is of type <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">&amp;Food</span><span style="color: #90A4AE;">`</span>
-help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
-<span style="color: #37474F;">   |</span>
-11 ~         Food::Burger =&gt; true,
-12 ~         &amp;Food::Gyros =&gt; todo!(),
-<span style="color: #37474F;">   |</span>
-
-For more information about this error, try <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">rustc --explain E0004</span><span style="color: #90A4AE;">`</span>.
 </pre>
 </div>
 
 </section>
-<section id="slide-5-5">
-<h3 id="5-5"><span class="section-number-3">5.5.</span> example1 2/</h3>
+</section>
+<section>
+<section id="slide-11">
+<h2 id="11"><span class="section-number-2">11.</span> Run result (Cont)</h2>
+<pre class="example">
+
+21 |     Gyros,
+   |     ----- not covered
+   = note: the matched value is of type `&amp;Food`
+help: ensure that all possible cases are being handled by adding a match arm with a wildcard pattern or an explicit pattern as shown
+   |
+11 ~         Food::Burger =&gt; true,
+12 ~         &amp;Food::Gyros =&gt; todo!(),
+   |
+
+For more information about this error, try `rustc --explain E0004`.
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-12">
+<h2 id="12"><span class="section-number-2">12.</span> example 2</h2>
 <pre class="example">
 fn main() {
     let x = vec![1.0f32, 2.0, 3.0];
-    let y = vec![4.0f32, 5.0, 6.0];
     let z = zero(x);
     let w = zero(x);
     println!("Hurray!!");
@@ -220,8 +246,10 @@ fn zero(x: Vec&lt;f32&gt;) -&gt; Vec&lt;f32&gt; {
 </pre>
 
 </section>
+</section>
 <section>
-
+<section id="slide-13">
+<h2 id="13"><span class="section-number-2">13.</span> The error</h2>
 <div class="org-src-container">
 
 <pre class="src src-markdown">error[E0382]: use of moved value: <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">x</span><span style="color: #90A4AE;">`</span>
@@ -229,13 +257,22 @@ fn zero(x: Vec&lt;f32&gt;) -&gt; Vec&lt;f32&gt; {
 <span style="color: #37474F;">  |</span>
 2 |     let x = vec![1.0f32, 2.0, 3.0];
 <span style="color: #37474F;">  |         - move occurs because </span><span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">x</span><span style="color: #90A4AE;">`</span><span style="color: #37474F;"> has type </span><span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">Vec&lt;f32&gt;</span><span style="color: #90A4AE;">`</span><span style="color: #37474F;">, which does not implement the </span><span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">Copy</span><span style="color: #90A4AE;">`</span><span style="color: #37474F;"> trait</span>
-3 |     let y = vec![4.0f32, 5.0, 6.0];
 4 |     let z = zero(x);
 <span style="color: #37474F;">  |                  - value moved here</span>
 5 |     let w = zero(x);
 <span style="color: #37474F;">  |                  ^ value used here after move</span>
 <span style="color: #37474F;">  |</span>
-note: consider changing this parameter type in function <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">zero</span><span style="color: #90A4AE;">`</span> to borrow instead if owning the value isn't necessary
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-14">
+<h2 id="14"><span class="section-number-2">14.</span> The error (Cont)</h2>
+<div class="org-src-container">
+
+<pre class="src src-markdown">note: consider changing this parameter type in function <span style="color: #90A4AE;">`</span><span style="color: #FFAB91;">zero</span><span style="color: #90A4AE;">`</span> to borrow instead if owning the value isn't necessary
  --&gt; src/main.rs:9:12
 <span style="color: #37474F;">  |</span>
 9 | fn zero(x: Vec<span style="color: #37474F;">&lt;</span><span style="color: #37474F;">f32</span><span style="color: #37474F;">&gt;</span>) -&gt; Vec<span style="color: #37474F;">&lt;</span><span style="color: #37474F;">f32</span><span style="color: #37474F;">&gt;</span> {
@@ -250,7 +287,10 @@ help: consider cloning the value if the performance cost is acceptable
 </div>
 
 </section>
+</section>
 <section>
+<section id="slide-15">
+<h2 id="15"><span class="section-number-2">15.</span> Final result</h2>
 <pre class="example">
 fn main() {
     let x = vec![1.0f32, 2.0, 3.0];
@@ -268,20 +308,77 @@ fn zero(x: &amp;Vec&lt;f32&gt;) -&gt; Vec&lt;f32&gt; {
 </section>
 </section>
 <section>
-<section id="slide-6">
-<h2 id="6"><span class="section-number-2">6.</span> Cons</h2>
+<section id="slide-16">
+<h2 id="16"><span class="section-number-2">16.</span> example 3</h2>
+<pre class="example">
+// An integer division that doesn't `panic!`
+fn checked_division(dividend: i32, divisor: i32) -&gt; Option&lt;i32&gt; {
+    if divisor == 0 {
+        // Failure is represented as the `None` variant
+        None
+    } else {
+        // Result is wrapped in a `Some` variant
+        Some(dividend / divisor)
+    }
+}
+</pre>
+</section>
+</section>
+<section>
+<section id="slide-17">
+<h2 id="17"><span class="section-number-2">17.</span> example 3 (Cont)</h2>
+<pre class="example">
+// This function handles a division that may not succeed
+fn try_division(dividend: i32, divisor: i32) {
+    // `Option` values can be pattern matched, just like other enums
+    match checked_division(dividend, divisor) {
+        None =&gt; println!("{} / {} failed!", dividend, divisor),
+        Some(quotient) =&gt; {
+            println!("{} / {} = {}", dividend, divisor, quotient)
+        },
+    }
+}
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-18">
+<h2 id="18"><span class="section-number-2">18.</span> example 3 (Cont)</h2>
+<pre class="example">
+fn main() {
+    let x = checked_division(4, 2);
+    let y = checked_division(1, 0);
+    // Unwrapping a `Some` variant will extract the value wrapped.
+    println!("x is {:?}", x.unwrap());
+    // proper error handling
+    match y {
+        Some(v) =&gt; println!("y is {:?}", v),
+        None =&gt; println!("y is None"),
+    }
+    // Unwrapping a `None` variant will `panic!`
+    println!("y is {:?}", y.unwrap());
+}
+</pre>
+
+</section>
+</section>
+<section>
+<section id="slide-19">
+<h2 id="19"><span class="section-number-2">19.</span> Cons</h2>
 <ul>
-<li>Slower dev time.</li>
+<li>Slower dev time (debatable).</li>
 <li>Very slow compile times.</li>
 <li>Syntax <b>is</b> verbose (kind of).</li>
+<li>Steep learning curve.</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-7">
-<h2 id="7"><span class="section-number-2">7.</span> Some general rule-of-thumbs</h2>
+<section id="slide-20">
+<h2 id="20"><span class="section-number-2">20.</span> Some general rule-of-thumbs</h2>
 <ul>
 <li>Only use Vec&lt;stuff&gt; and structs to store data</li>
 <li>Functions on the above should accept &amp;Vec&lt;stuff&gt; and &amp;Struct</li>
@@ -293,8 +390,8 @@ fn zero(x: &amp;Vec&lt;f32&gt;) -&gt; Vec&lt;f32&gt; {
 </section>
 </section>
 <section>
-<section id="slide-8">
-<h2 id="8"><span class="section-number-2">8.</span> Numerical Example</h2>
+<section id="slide-21">
+<h2 id="21"><span class="section-number-2">21.</span> Numerical Example</h2>
 <p>
 min \(L=(x+y)^2\)
 </p>
@@ -302,25 +399,44 @@ min \(L=(x+y)^2\)
 <p>
 given that \(x^2+y^2=1\)
 </p>
+
 </section>
 <section>
 <p>
 Rewritting this as lagrange multipliers
+</p>
+
+<p>
 min \(L=(x+y)^2+\lambda*(x^2+y^2)\)
+</p>
+
+</section>
+<section>
+<p>
+Rewritting this as lagrange multipliers (heuristic)
+</p>
+
+<p>
+min \(L=(x+y)^2+\lambda*(x^2+y^2)^2\)
 </p>
 
 
 </section>
 </section>
 <section>
-<section id="slide-9">
-<h2 id="9"><span class="section-number-2">9.</span> Conclusions</h2>
+<section id="slide-22">
+<h2 id="22"><span class="section-number-2">22.</span> Questions?</h2>
+
+<div id="org3943242" class="figure">
+<p><img src="./images/ferris.png" alt="ferris.png" />
+</p>
+</div>
 
 </section>
 </section>
 <section>
-<section id="slide-10">
-<h2 id="10"><span class="section-number-2">10.</span> Repo &amp; contact info</h2>
+<section id="slide-23">
+<h2 id="23"><span class="section-number-2">23.</span> Repo &amp; contact info</h2>
 <ul>
 <li>github repo: <a href="https://github.com/krestomantsi/opada-2024">https://github.com/krestomantsi/opada-2024</a></li>
 <li>email: nlampri@gmail.com</li>

@@ -1,5 +1,9 @@
 #+title: The case for using Rust (as a marine engineer)
 #+author: Nick Lamprinidis
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+
 
 * About me
 
@@ -40,38 +44,39 @@
 - Great ecosystem + tooling.
 - Open source.
 
-** How fast?
+* How fast?
 
-[[./images/fastest-elapsed-imp.svg]]
+#+attr_html: :width 300px
+#+attr_latex: :width 300px
+[[./images/fastest-elapsed-imp.png]]
 
-** Safety
+* Safety
 
-+ pointers checked at compile-time
++ Pointers checked at compile-time
 + Thread-safety
 + No hidden states
 + Beautifull type system
 + Error handling at its best
 
-** Compiler errors
-** example1 1/
+* example 1
 
 #+begin_src
 fn main() {
-    let pantry = vec![Food::Fasolakia(3), Food::Burger, Food::Gyros];
-    let yummy_foods = yummy(&pantry);
+    let lista = vec![Food::Fasolakia(3), Food::Burger, Food::Gyros];
+    let yummy_foods = yummy(&lista);
     println!("{:?}", yummy_foods);
 }
-
-// returns if a food is yummy or not
-fn yummy(lista: &Vec<Food>) -> Vec<bool> {
+fn yummy(lista: &Vec<Food>) -> Vec<bool> {// returns if a food is yummy or not
     let is_yummy = lista.iter().map(|food| match food {
         Food::Fasolakia(_) => false,
         Food::Burger => true,
-        Food::Gyros => true,
     });
     is_yummy.collect()
 }
+#+end_src
 
+* example 1 (Cont)
+#+begin_src
 #[derive(PartialEq)]
 enum Food {
     Fasolakia(u16),
@@ -80,7 +85,7 @@ enum Food {
 }
 #+end_src
 
-#+reveal: split
+* Run result
 #+begin_src markdown
 cargo run
    Compiling example1 v0.1.0 (C:\Users\NLamprinidis\Downloads\opada-2024\example1)
@@ -96,6 +101,11 @@ note: `Food` defined here
 18 | enum Food {
    |      ^^^^
 ...
+#+end_src
+
+* Run result (Cont)
+#+begin_src
+
 21 |     Gyros,
    |     ----- not covered
    = note: the matched value is of type `&Food`
@@ -108,11 +118,10 @@ help: ensure that all possible cases are being handled by adding a match arm wit
 For more information about this error, try `rustc --explain E0004`.
 #+end_src
 
-** example1 2/
+* example 2
 #+begin_src
 fn main() {
     let x = vec![1.0f32, 2.0, 3.0];
-    let y = vec![4.0f32, 5.0, 6.0];
     let z = zero(x);
     let w = zero(x);
     println!("Hurray!!");
@@ -123,20 +132,22 @@ fn zero(x: Vec<f32>) -> Vec<f32> {
 }
 #+end_src
 
-#+reveal: split
-
+* The error
 #+begin_src markdown
 error[E0382]: use of moved value: `x`
  --> src/main.rs:5:18
   |
 2 |     let x = vec![1.0f32, 2.0, 3.0];
   |         - move occurs because `x` has type `Vec<f32>`, which does not implement the `Copy` trait
-3 |     let y = vec![4.0f32, 5.0, 6.0];
 4 |     let z = zero(x);
   |                  - value moved here
 5 |     let w = zero(x);
   |                  ^ value used here after move
   |
+#+end_src
+
+* The error (Cont)
+#+begin_src markdown
 note: consider changing this parameter type in function `zero` to borrow instead if owning the value isn't necessary
  --> src/main.rs:9:12
   |
@@ -150,7 +161,7 @@ help: consider cloning the value if the performance cost is acceptable
   |                   ++++++++
 #+end_src
 
-#+reveal:split
+* Final result
 #+begin_src
 fn main() {
     let x = vec![1.0f32, 2.0, 3.0];
@@ -165,11 +176,56 @@ fn zero(x: &Vec<f32>) -> Vec<f32> {
 }
 #+end_src
 
+* example 3
+#+begin_src
+// An integer division that doesn't `panic!`
+fn checked_division(dividend: i32, divisor: i32) -> Option<i32> {
+    if divisor == 0 {
+        // Failure is represented as the `None` variant
+        None
+    } else {
+        // Result is wrapped in a `Some` variant
+        Some(dividend / divisor)
+    }
+}
+#+end_src
+* example 3 (Cont)
+#+begin_src
+// This function handles a division that may not succeed
+fn try_division(dividend: i32, divisor: i32) {
+    // `Option` values can be pattern matched, just like other enums
+    match checked_division(dividend, divisor) {
+        None => println!("{} / {} failed!", dividend, divisor),
+        Some(quotient) => {
+            println!("{} / {} = {}", dividend, divisor, quotient)
+        },
+    }
+}
+#+end_src
+
+* example 3 (Cont)
+#+begin_src
+fn main() {
+    let x = checked_division(4, 2);
+    let y = checked_division(1, 0);
+    // Unwrapping a `Some` variant will extract the value wrapped.
+    println!("x is {:?}", x.unwrap());
+    // proper error handling
+    match y {
+        Some(v) => println!("y is {:?}", v),
+        None => println!("y is None"),
+    }
+    // Unwrapping a `None` variant will `panic!`
+    println!("y is {:?}", y.unwrap());
+}
+#+end_src
+
 * Cons
 
-+ Slower dev time.
++ Slower dev time (debatable).
 + Very slow compile times.
 + Syntax *is* verbose (kind of).
++ Steep learning curve.
 
 * Some general rule-of-thumbs
 
@@ -182,15 +238,20 @@ fn zero(x: &Vec<f32>) -> Vec<f32> {
 min $L=(x+y)^2$
 
 given that $x^2+y^2=1$
+
 #+reveal:split
 Rewritting this as lagrange multipliers
+
 min $L=(x+y)^2+\lambda*(x^2+y^2)$
+
 #+reveal:split
 Rewritting this as lagrange multipliers (heuristic)
+
 min $L=(x+y)^2+\lambda*(x^2+y^2)^2$
 
 
-* Conclusions
+* Questions?
+[[./images/ferris.png]]
 
 * Repo & contact info
 + github repo: https://github.com/krestomantsi/opada-2024
